@@ -1,5 +1,7 @@
+
 import React from 'react';
 import { Topic, Category, CATEGORY_STYLES, CATEGORY_HOVER_STYLES } from '../types';
+import { ambientEngine } from '../utils/audioEngine';
 
 interface ElementCardProps {
   topic: Topic;
@@ -13,7 +15,6 @@ const ElementCard: React.FC<ElementCardProps> = ({ topic, onClick, onSelect, isS
   const colorClasses = CATEGORY_STYLES[category] || 'text-gray-400 border-gray-500';
   const hoverBg = CATEGORY_HOVER_STYLES[category] || 'hover:bg-gray-800';
 
-  // Added 'hover-neon-pulse' to baseClasses
   const baseClasses = `relative flex flex-col justify-between p-3 md:p-4 aspect-square border-2 backdrop-blur-sm cursor-pointer transition-all duration-300 transform group overflow-hidden hover-neon-pulse ${isSelected ? 'ring-2 ring-white scale-95 opacity-100 bg-gray-800' : 'bg-[#0f0e17]/80 hover:-translate-y-1'}`;
 
   const handleDragStart = (e: React.DragEvent) => {
@@ -21,18 +22,42 @@ const ElementCard: React.FC<ElementCardProps> = ({ topic, onClick, onSelect, isS
     e.dataTransfer.effectAllowed = "copy";
   };
 
+  const handleMouseEnter = () => {
+      // Pass the category to play distinct hover sounds
+      ambientEngine.playSFX('hover', topic.category);
+  };
+
+  const handleClick = (e: React.MouseEvent) => {
+      ambientEngine.playSFX('click', topic.category);
+      onClick(topic);
+  };
+
   return (
     <div 
       className={`${baseClasses} ${colorClasses} ${hoverBg}`}
-      onClick={() => onClick(topic)}
+      onClick={handleClick}
+      onMouseEnter={handleMouseEnter}
       draggable="true"
       onDragStart={handleDragStart}
       role="button"
       tabIndex={0}
     >
-      {/* Nano Banana Procedural Texture Overlay for Gemini */}
+      {/* Gemini Nano-Banana Procedural Background */}
       {category === Category.GEMINI && (
-         <div className="absolute inset-0 opacity-20 pointer-events-none bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0deg,rgba(236,72,153,0.3)_60deg,transparent_120deg,rgba(168,85,247,0.3)_180deg,transparent_240deg,rgba(236,72,153,0.3)_300deg,transparent_360deg)] mix-blend-screen"></div>
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(236,72,153,0.1),transparent_70%)] animate-pulse-slow"></div>
+            <div className="absolute -inset-[50%] opacity-20 animate-[spin_8s_linear_infinite]" 
+                 style={{ 
+                    background: 'conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(236, 72, 153, 0.2) 60deg, transparent 120deg, rgba(168, 85, 247, 0.2) 180deg, transparent 240deg, rgba(236, 72, 153, 0.2) 300deg, transparent 360deg)'
+                 }}>
+            </div>
+            <div className="absolute inset-0 opacity-10" 
+                 style={{ 
+                     backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', 
+                     backgroundSize: '10px 10px' 
+                 }}>
+            </div>
+        </div>
       )}
 
       <div className="flex justify-between items-start relative z-10">
@@ -40,12 +65,12 @@ const ElementCard: React.FC<ElementCardProps> = ({ topic, onClick, onSelect, isS
             {category.slice(0, 3)}
          </span>
          
-         {/* Selection Indicator or Decoration */}
          {onSelect ? (
             <div 
                 className={`w-4 h-4 rounded-full border border-current flex items-center justify-center transition-all ${isSelected ? 'bg-current text-black' : 'hover:bg-white/10'}`}
                 onClick={(e) => {
                     e.stopPropagation();
+                    ambientEngine.playSFX('click'); // Generic click for checkbox
                     onSelect(topic);
                 }}
             >
@@ -71,7 +96,6 @@ const ElementCard: React.FC<ElementCardProps> = ({ topic, onClick, onSelect, isS
          </p>
       </div>
       
-      {/* Corner Accent */}
       <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-current opacity-50 group-hover:opacity-100 relative z-10"></div>
     </div>
   );

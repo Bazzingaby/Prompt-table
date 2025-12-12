@@ -1,3 +1,4 @@
+
 export enum Category {
   UNIVERSAL = 'Universal',
   GEMINI = 'Gemini',
@@ -6,7 +7,11 @@ export enum Category {
   GROK = 'Grok',
   PERPLEXITY = 'Perplexity',
   OPENSOURCE = 'OpenSource',
-  COMMAND = 'Command'
+  COMMAND = 'Command',
+  // Media Series
+  VIDEO = 'Video',
+  AUDIO = 'Audio',
+  VOICE = 'Voice'
 }
 
 export interface TopicDetails {
@@ -47,6 +52,10 @@ export const CATEGORY_STYLES: Record<Category, string> = {
   [Category.PERPLEXITY]: 'text-teal-400 border-teal-500/50 hover:border-teal-400 hover:shadow-[0_0_15px_rgba(45,212,191,0.4)]',
   [Category.OPENSOURCE]: 'text-yellow-400 border-yellow-500/50 hover:border-yellow-400 hover:shadow-[0_0_15px_rgba(250,204,21,0.4)]',
   [Category.COMMAND]: 'text-purple-400 border-purple-500/50 hover:border-purple-400 hover:shadow-[0_0_15px_rgba(192,132,252,0.4)]',
+  // Media Series Styles (High Glow)
+  [Category.VIDEO]: 'text-purple-500 border-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.3)] hover:shadow-[0_0_25px_rgba(168,85,247,0.6)]',
+  [Category.AUDIO]: 'text-blue-500 border-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.3)] hover:shadow-[0_0_25px_rgba(59,130,246,0.6)]',
+  [Category.VOICE]: 'text-orange-500 border-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.3)] hover:shadow-[0_0_25px_rgba(249,115,22,0.6)]',
 };
 
 export const CATEGORY_HOVER_STYLES: Record<Category, string> = {
@@ -58,4 +67,8 @@ export const CATEGORY_HOVER_STYLES: Record<Category, string> = {
   [Category.PERPLEXITY]: 'hover:bg-teal-900/20',
   [Category.OPENSOURCE]: 'hover:bg-yellow-900/20',
   [Category.COMMAND]: 'hover:bg-purple-900/20',
+  // Media Hover
+  [Category.VIDEO]: 'hover:bg-purple-900/30',
+  [Category.AUDIO]: 'hover:bg-blue-900/30',
+  [Category.VOICE]: 'hover:bg-orange-900/30',
 };

@@ -1,3 +1,4 @@
+
 import { Topic, Tier2Topic, Category } from './types';
 
 export const TOPICS: Topic[] = [
@@ -283,6 +284,31 @@ export const TOPICS: Topic[] = [
     "description": "Structured investigation methodology with key sources and evidence gathering.",
     "usage": "/research (Core Question -> Evidence -> Synthesis)"
   }
+];
+
+// --- MEDIA SERIES (Detached Row) ---
+export const MEDIA_TOPICS: Topic[] = [
+    {
+        "symbol": "Vid",
+        "element": "Video Gen",
+        "category": "Video",
+        "description": "Veo / Sora prompting. Focus on camera motion, lighting, and physics consistency.",
+        "usage": "Camera: [Pan/Zoom] | Lighting: [Cinematic] | Subject: [Action]"
+    },
+    {
+        "symbol": "Aud",
+        "element": "Audio/SFX",
+        "category": "Audio",
+        "description": "Sound generation prompting. Specify BPM, instruments, mood, and texture.",
+        "usage": "Genre: [Lofi] | BPM: [90] | Instruments: [Synth, Bass]"
+    },
+    {
+        "symbol": "Vox",
+        "element": "Voice/TTS",
+        "category": "Voice",
+        "description": "Text-to-Speech styling. Control prosody, emotion, pauses, and accent.",
+        "usage": "Emotion: [Whisper] | Pause: [..] | Speed: [Slow]"
+    }
 ];
 
 export const TIER_2_TOPICS: Tier2Topic[] = [
