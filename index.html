@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Periodic Table of Prompt Engineering</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --bg-dark: #050510;
+        --grid-line: rgba(60, 255, 255, 0.05);
+      }
+      body {
+        background-color: var(--bg-dark);
+        color: #e0e0e0;
+        font-family: 'Rajdhani', sans-serif;
+        overflow-x: hidden;
+      }
+      
+      /* Digital Grid Background */
+      .bg-grid-pattern {
+        background-image: 
+          linear-gradient(var(--grid-line) 1px, transparent 1px),
+          linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+        background-size: 40px 40px;
+        background-position: center top;
+      }
+
+      /* Neon Glow Utilities */
+      .neon-text-green { text-shadow: 0 0 5px rgba(74, 222, 128, 0.5), 0 0 10px rgba(74, 222, 128, 0.3); }
+      .neon-border-green { box-shadow: 0 0 10px rgba(74, 222, 128, 0.2), inset 0 0 5px rgba(74, 222, 128, 0.1); }
+      
+      .neon-text-cyan { text-shadow: 0 0 5px rgba(34, 211, 238, 0.5), 0 0 10px rgba(34, 211, 238, 0.3); }
+      .neon-border-cyan { box-shadow: 0 0 10px rgba(34, 211, 238, 0.2), inset 0 0 5px rgba(34, 211, 238, 0.1); }
+      
+      .neon-text-yellow { text-shadow: 0 0 5px rgba(250, 204, 21, 0.5), 0 0 10px rgba(250, 204, 21, 0.3); }
+      .neon-border-yellow { box-shadow: 0 0 10px rgba(250, 204, 21, 0.2), inset 0 0 5px rgba(250, 204, 21, 0.1); }
+      
+      .neon-text-orange { text-shadow: 0 0 5px rgba(251, 146, 60, 0.5), 0 0 10px rgba(251, 146, 60, 0.3); }
+      .neon-border-orange { box-shadow: 0 0 10px rgba(251, 146, 60, 0.2), inset 0 0 5px rgba(251, 146, 60, 0.1); }
+      
+      .neon-text-purple { text-shadow: 0 0 5px rgba(192, 132, 252, 0.5), 0 0 10px rgba(192, 132, 252, 0.3); }
+      .neon-border-purple { box-shadow: 0 0 10px rgba(192, 132, 252, 0.2), inset 0 0 5px rgba(192, 132, 252, 0.1); }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #0f0f1a; }
+      ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+      /* Marquee Animation */
+      @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .animate-marquee {
+        display: flex;
+        animation: marquee 30s linear infinite;
+        width: max-content;
+      }
+      .animate-marquee:hover {
+        animation-play-state: paused;
+      }
+
+      /* Neon Pulse Animation for Element Cards */
+      @keyframes neon-pulse {
+        0% {
+          box-shadow: 0 0 5px currentColor, inset 0 0 2px currentColor;
+          border-color: currentColor;
+        }
+        50% {
+          box-shadow: 0 0 20px currentColor, inset 0 0 8px currentColor;
+          border-color: currentColor;
+        }
+        100% {
+          box-shadow: 0 0 5px currentColor, inset 0 0 2px currentColor;
+          border-color: currentColor;
+        }
+      }
+      .hover-neon-pulse:hover {
+        animation: neon-pulse 2s infinite ease-in-out !important;
+        z-index: 10;
+      }
+      
+      /* Slow Pulse for Gemini */
+      @keyframes pulse-slow {
+        0%, 100% { opacity: 1; }
+        50% { opacity: .7; }
+      }
+      .animate-pulse-slow {
+        animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+
+      /* Reverse Spin for Quantum Loader */
+      @keyframes spin-reverse {
+        from { transform: rotate(360deg); }
+        to { transform: rotate(0deg); }
+      }
+      .animate-spin-reverse {
+        animation: spin-reverse 3s linear infinite;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.33.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-grid-pattern min-h-screen">
+    <div id="root"></div>
+  </body>
+</html>
