@@ -14,7 +14,8 @@
     "@google/genai": "^1.33.0",
     "three": "0.160.0",
     "@react-three/fiber": "8.15.12",
-    "@react-three/drei": "9.99.0"
+    "@react-three/drei": "9.99.0",
+    "html2canvas": "1.4.1"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",

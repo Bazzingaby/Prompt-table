@@ -43,6 +43,18 @@ export interface Tier2Topic {
   sentiment?: 'up' | 'down' | 'neutral';
 }
 
+// Plan Types
+export interface PlanData {
+  title: string;
+  steps: {
+    id: string;
+    label: string;
+    type: 'start' | 'process' | 'decision' | 'end';
+    details?: string;
+  }[];
+}
+
+
 export const CATEGORY_STYLES: Record<Category, string> = {
   [Category.UNIVERSAL]: 'text-green-400 border-green-500/50 hover:border-green-400 hover:shadow-[0_0_15px_rgba(74,222,128,0.4)]',
   [Category.GEMINI]: 'text-pink-400 border-pink-500/50 hover:border-pink-400 hover:shadow-[0_0_20px_rgba(236,72,153,0.6)] animate-pulse-slow',
